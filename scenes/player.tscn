@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cs11xi1l41461"]
+
+[ext_resource type="Texture2D" uid="uid://de1hj0fcg865r" path="res://assets/Sprites/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_vg5lj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wofc6"]
+atlas = ExtResource("1_vg5lj")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioh7q"]
+atlas = ExtResource("1_vg5lj")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifhpw"]
+atlas = ExtResource("1_vg5lj")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prfjb"]
+atlas = ExtResource("1_vg5lj")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vonkh"]
+atlas = ExtResource("1_vg5lj")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0v47"]
+atlas = ExtResource("1_vg5lj")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34eig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wofc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioh7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifhpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prfjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vonkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0v47")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0hna"]
+radius = 17.72
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -26)
+sprite_frames = SubResource("SpriteFrames_34eig")
+animation = &"idle"
+autoplay = "idle"
+frame = 3
+frame_progress = 0.0407858
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_h0hna")
