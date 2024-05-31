@@ -1,22 +1,37 @@
 extends CharacterBody2D
 
+const speed = 330
+@onready var animated_sprite = $AnimatedSprite2D
 
-const SPEED = 130
+var input_movement = Vector2()
 
-
-func _physics_process(delta):
-	var directiony = Input.get_axis("move_up", "move_down")
-	if directiony:
-		velocity.y = directiony * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
+func _process(delta):
+	movement(delta)
+	
+func movement(delta):
+	animation()
+	input_movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if input_movement != Vector2.ZERO:
+		velocity = input_movement * speed
+	if input_movement == Vector2.ZERO:
+		velocity = Vector2.ZERO
+	
+	#velocity = velocity.normalized()
 	move_and_slide()
 
-	var directionx = Input.get_axis("move_left", "move_right")
-	if directionx:
-		velocity.x = directionx * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+func animation():
+	if input_movement != Vector2.ZERO:
+		if input_movement.x > 0:
+			animated_sprite.play("run")
+			animated_sprite.flip_h = false
+		if input_movement.x < 0:
+			animated_sprite.play("run")
+			animated_sprite.flip_h = true
+		if input_movement.y > 0:
+			animated_sprite.play("run")
+		if input_movement.y < 0:
+			animated_sprite.play("run")
+	
+	if input_movement == Vector2.ZERO:
+		animated_sprite.play("idle")

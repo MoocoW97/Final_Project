@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6yex1ppmioxn"]
+
+[ext_resource type="Texture2D" uid="uid://b2q0xmigbsur1" path="res://assets/sprites/Terrain/Ground/Shadows.png" id="1_1ubwi"]
+
+[node name="shadow" type="Sprite2D"]
+texture = ExtResource("1_1ubwi")
